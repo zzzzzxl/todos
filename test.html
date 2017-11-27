@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Template • TodoMVC</title>
+    <link rel="stylesheet" href="node_modules/todomvc-app-css/index.css">
+    <link rel="stylesheet" href="css/app.css">
+    <script src="./node_modules/angular/angular.min.js"></script>
+</head>
+
+<body ng-app="myToDoMVC" ng-controller="MainController">
+    <section class="main">
+        <ul class="todo-list">
+            <li ng-repeat="item in todos" ng-class="{completed:item.completed,editing:item.id===currentEditing}" ng-if="item.text">
+                <div class="view">
+                    <input class="toggle" type="checkbox" checked ng-model="item.completed" data-id="{{item.id}}">
+                    <label ng-dblclick="editing(item.id)">{{item.text}}</label>
+                    <button class="destroy" ng-click="del(item.id)"></button>
+                </div>
+                <form ng-submit="save(item.id)">
+                    <input class="edit" value="Create a TodoMVC template" ng-model="textTemp" ng-blur="save(item.id)" ng-change="change()">
+                </form>
+            </li>
+        </ul>
+    </section>
+
+    <script src="js/test.js "></script>
+</body>
+
+</html>
